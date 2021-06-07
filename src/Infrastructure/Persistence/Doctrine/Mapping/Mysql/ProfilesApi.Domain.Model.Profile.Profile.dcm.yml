@@ -1,0 +1,34 @@
+ProfilesApi\Domain\Model\Profile\Profile:
+  type: entity
+  table: profile
+  id:
+    id:
+      type: integer
+      length: 10
+      id: true
+      generator:
+        strategy: AUTO
+      options:
+        unsigned: true
+  fields:
+      name:
+        type: string
+        column: name
+        length: 250
+        nullable: false
+
+      age:
+        type: integer
+        column: age
+        nullable: false
+
+      biography:
+        type: text
+        column: biography
+        nullable: false
+
+      profileImage:
+        type: string
+        column: profile_image
+        length: 250
+        nullable: false
