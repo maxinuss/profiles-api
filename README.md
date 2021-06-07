@@ -15,9 +15,9 @@ In order to run this project you will need:
 
 #### Local environment
 
-* Nginx
+* Nginx (To connect from your machine use localhost:8030)
 * PHP 7.4 (FPM)
-* MySQL
+* MySQL (To connect from your machine use localhost and port 3390)
 
 If you use Linux a *Makefile* is included, so you can run these commands to start and stop all containers at once.
 Go to project root and run:
