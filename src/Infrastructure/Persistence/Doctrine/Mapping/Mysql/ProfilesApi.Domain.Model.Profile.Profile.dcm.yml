@@ -1,6 +1,10 @@
 ProfilesApi\Domain\Model\Profile\Profile:
   type: entity
   table: profile
+  indexes:
+    age_index:
+      columns: [ age ]
+
   id:
     id:
       type: integer
