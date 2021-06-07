@@ -16,7 +16,7 @@ In order to run this project you will need:
 #### Local environment
 
 * Nginx
-* PHP 7.2 (FPM)
+* PHP 7.4 (FPM)
 * MySQL
 
 If you use Linux a *Makefile* is included, so you can run these commands to start and stop all containers at once.
