@@ -5,7 +5,7 @@ namespace ProfilesApi\Application\Service\Profile;
 
 use ProfilesApi\Domain\Model\Profile\ProfileRepository;
 use ProfilesApi\Infrastructure\Service\JsonTransformer;
-use ProfilesApi\Infrastructure\Transformer\ProfileAddTransformer;
+use ProfilesApi\Infrastructure\Transformer\ProfileBodyTransformer;
 
 class ProfileUpdateService
 {
@@ -57,6 +57,6 @@ class ProfileUpdateService
             ];
         }
 
-        return $this->jsonTransformer->formatItem($profile, new ProfileAddTransformer());
+        return $this->jsonTransformer->formatItem($profile, new ProfileBodyTransformer());
     }
 }

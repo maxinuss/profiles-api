@@ -6,7 +6,7 @@ namespace ProfilesApi\Infrastructure\Transformer;
 use ProfilesApi\Domain\Model\Profile\Profile;
 use League\Fractal\TransformerAbstract;
 
-class ProfileAddTransformer extends TransformerAbstract
+class ProfileBodyTransformer extends TransformerAbstract
 {
     /**
      * @param Profile $profile

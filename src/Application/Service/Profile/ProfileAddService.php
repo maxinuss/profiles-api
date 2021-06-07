@@ -7,7 +7,7 @@ use ProfilesApi\Application\Service\Profile\ProfileAddRequest;
 use ProfilesApi\Domain\Model\Profile\Profile;
 use ProfilesApi\Domain\Model\Profile\ProfileRepository;
 use ProfilesApi\Infrastructure\Service\JsonTransformer;
-use ProfilesApi\Infrastructure\Transformer\ProfileAddTransformer;
+use ProfilesApi\Infrastructure\Transformer\ProfileBodyTransformer;
 
 class ProfileAddService
 {
@@ -60,6 +60,6 @@ class ProfileAddService
             ];
         }
 
-        return $this->jsonTransformer->formatItem($profile, new ProfileAddTransformer());
+        return $this->jsonTransformer->formatItem($profile, new ProfileBodyTransformer());
     }
 }
