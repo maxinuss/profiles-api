@@ -56,6 +56,7 @@ class Profile
     public function setName(string $name) : Profile
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -74,6 +75,7 @@ class Profile
     public function setAge(int $age) : Profile
     {
         $this->age = $age;
+
         return $this;
     }
 
@@ -92,6 +94,7 @@ class Profile
     public function setBiography(string $biography) : Profile
     {
         $this->biography = $biography;
+
         return $this;
     }
 
@@ -110,6 +113,7 @@ class Profile
     public function setProfileImage(string $profileImage) : Profile
     {
         $this->profileImage = $profileImage;
+
         return $this;
     }
 }

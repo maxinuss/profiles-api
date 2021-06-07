@@ -11,19 +11,25 @@ class DoctrineMysqlProfileRepository extends DoctrineMysqlRepository implements 
 {
     /**
      * @param Profile $profile
+     * @return Profile
      */
-    public function add(Profile $profile)
+    public function add(Profile $profile): Profile
     {
         $this->em->persist($profile);
         $this->em->flush();
+
+        return $profile;
     }
 
     /**
      * @param Profile $profile
+     * @return Profile
      */
-    public function update(Profile $profile)
+    public function update(Profile $profile): Profile
     {
         $this->em->persist($profile);
+
+        return $profile;
     }
 
     /**
@@ -76,6 +82,7 @@ class DoctrineMysqlProfileRepository extends DoctrineMysqlRepository implements 
         $qb =  $this->em->createQueryBuilder();
         $qb->select('AVG(p.age) as average')
             ->from(Profile::class    , 'p');
+
 
         return empty($qb->getQuery()->getResult()) ? false : $qb->getQuery()->getResult()[0]['average'];
     }

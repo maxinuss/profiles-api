@@ -58,6 +58,8 @@ Postman collection: [Download here](utils/postman_collection.json)
 
 #### Running test
 This project is tested under PHPUnit and includes a unit test suite:
+
+Inside the docker container (```make php``` on linux or ```docker exec -it php-maxinuss-container bash``` in windows)
 ```
 php vendor/bin/phpunit
 ```

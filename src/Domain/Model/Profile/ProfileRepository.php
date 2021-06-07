@@ -7,13 +7,14 @@ interface ProfileRepository
 {
     /**
      * @param Profile $profile
+     * @return Profile
      */
-    public function add(Profile $profile);
+    public function add(Profile $profile): Profile;
 
     /**
      * @param Profile $profile
      */
-    public function update(Profile $profile);
+    public function update(Profile $profile): Profile;
 
     /**
      * @param Profile $profile

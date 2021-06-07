@@ -57,7 +57,7 @@ class ProfileService
             $profile->setBiography($request->biography());
             $profile->setProfileImage($request->profileImage());
 
-            $this->profileRepository->add($profile);
+            $profile = $this->profileRepository->add($profile);
         } catch (\Exception $e) {
             return [
                 'error' => $e->getMessage()
@@ -124,7 +124,7 @@ class ProfileService
             $profile->setBiography($request->biography());
             $profile->setProfileImage($request->profileImage());
 
-            $this->profileRepository->update($profile);
+            $profile = $this->profileRepository->update($profile);
         } catch (\Exception $e) {
             return [
                 'error' => $e->getMessage()
