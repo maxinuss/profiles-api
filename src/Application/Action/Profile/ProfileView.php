@@ -3,22 +3,22 @@ declare(strict_types=1);
 
 namespace ProfilesApi\Application\Action\Profile;
 
-use ProfilesApi\Application\Service\Profile\ProfileViewRequest;
-use ProfilesApi\Application\Service\Profile\ProfileViewService;
+use ProfilesApi\Application\Request\Profile\ProfileViewRequest;
+use ProfilesApi\Application\Service\ProfileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ProfileView
 {
     /**
-     * @var ProfileViewService
+     * @var ProfileService
      */
     private $service;
 
     /**
-     * @param ProfileViewService $service
+     * @param ProfileService $service
      */
-    public function __construct(ProfileViewService $service)
+    public function __construct(ProfileService $service)
     {
         $this->service = $service;
     }
@@ -31,14 +31,10 @@ class ProfileView
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $id): ResponseInterface
     {
-        $result = $this->service->execute(new ProfileViewRequest(
+        $result = $this->service->getOne(new ProfileViewRequest(
             (int) $id
         ));
 
-        if ($result === true) {
-            return $response->withStatus(200);
-        } else {
-            return $response->withJson($result);
-        }
+        return $response->withJson($result);
     }
 }

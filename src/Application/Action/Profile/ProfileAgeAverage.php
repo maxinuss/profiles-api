@@ -7,7 +7,7 @@ use ProfilesApi\Application\Service\ProfileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ProfileList
+class ProfileAgeAverage
 {
     /**
      * @var ProfileService
@@ -29,7 +29,7 @@ class ProfileList
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $args = []): ResponseInterface
     {
-        $result = $this->service->listAll();
+        $result = $this->service->ageAverage();
 
         return $response->withJson($result);
     }

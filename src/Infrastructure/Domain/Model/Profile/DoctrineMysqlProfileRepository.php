@@ -66,4 +66,18 @@ class DoctrineMysqlProfileRepository extends DoctrineMysqlRepository implements 
         return empty($result) ? false : $result;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return bool|mixed|object|null
+     */
+    public function getAgeAverage()
+    {
+        $qb =  $this->em->createQueryBuilder();
+        $qb->select('AVG(p.age) as average')
+            ->from(Profile::class    , 'p');
+
+        return empty($qb->getQuery()->getResult()) ? false : $qb->getQuery()->getResult()[0]['average'];
+    }
+
 }

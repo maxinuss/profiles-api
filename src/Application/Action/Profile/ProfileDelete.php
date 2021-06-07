@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace ProfilesApi\Application\Action\Profile;
 
-use ProfilesApi\Application\Service\Profile\ProfileDeleteRequest;
-use ProfilesApi\Application\Service\Profile\ProfileDeleteService;
+use ProfilesApi\Application\Request\Profile\ProfileDeleteRequest;
+use ProfilesApi\Application\Service\ProfileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ProfileDelete
 {
     /**
-     * @var ProfileDeleteService
+     * @var ProfileService
      */
     private $service;
     /**
-     * @param ProfileDeleteService $service
+     * @param ProfileService $service
      */
-    public function __construct(ProfileDeleteService $service)
+    public function __construct(ProfileService $service)
     {
         $this->service = $service;
     }
@@ -30,14 +30,10 @@ class ProfileDelete
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $id): ResponseInterface
     {
-        $result = $this->service->execute(new ProfileDeleteRequest(
+        $result = $this->service->delete(new ProfileDeleteRequest(
             (int) $id
         ));
 
-        if ($result === true) {
-            return $response->withStatus(200);
-        } else {
-            return $response->withJson($result);
-        }
+        return $response->withJson($result);
     }
 }

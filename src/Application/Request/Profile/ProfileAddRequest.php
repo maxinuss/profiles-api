@@ -1,15 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace ProfilesApi\Application\Service\Profile;
+namespace ProfilesApi\Application\Request\Profile;
 
-class ProfileUpdateRequest
+class ProfileAddRequest
 {
-    /**
-     * @var int
-     */
-    private $id;
-
     /**
      * @var string
      */
@@ -31,28 +26,18 @@ class ProfileUpdateRequest
     private $profileImage;
 
     /**
-     * ProfileUpdateRequest constructor.
-     * @param int $id
+     * ProfileAddRequest constructor.
      * @param string $name
      * @param int $age
      * @param string $biography
      * @param string $profileImage
      */
-    public function __construct(int $id, string $name, int $age, string $biography, string $profileImage)
+    public function __construct(string $name, int $age, string $biography, string $profileImage)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->age = $age;
         $this->biography = $biography;
         $this->profileImage = $profileImage;
-    }
-
-    /**
-     * @return integer
-     */
-    public function id(): int
-    {
-        return $this->id;
     }
 
     /**

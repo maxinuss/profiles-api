@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ProfilesApi\Application\Service\Profile;
+namespace ProfilesApi\Application\Request\Profile;
 
 class ProfileDeleteRequest
 {

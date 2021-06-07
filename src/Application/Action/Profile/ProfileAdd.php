@@ -3,22 +3,22 @@ declare(strict_types=1);
 
 namespace ProfilesApi\Application\Action\Profile;
 
-use ProfilesApi\Application\Service\Profile\ProfileAddRequest;
-use ProfilesApi\Application\Service\Profile\ProfileAddService;
+use ProfilesApi\Application\Request\Profile\ProfileAddRequest;
+use ProfilesApi\Application\Service\ProfileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ProfileAdd
 {
     /**
-     * @var ProfileAddService
+     * @var ProfileService
      */
     private $service;
 
     /**
-     * @param ProfileAddService $service
+     * @param ProfileService $service
      */
-    public function __construct(ProfileAddService $service)
+    public function __construct(ProfileService $service)
     {
         $this->service = $service;
     }
@@ -33,17 +33,13 @@ class ProfileAdd
     {
         $body = $request->getParsedBody();
 
-        $result = $this->service->execute(new ProfileAddRequest(
+        $result = $this->service->add(new ProfileAddRequest(
             $body['name'],
             $body['age'],
             $body['biography'],
             $body['profileImage']
         ));
 
-        if ($result === true) {
-            return $response->withStatus(201);
-        } else {
-            return $response->withJson($result);
-        }
+        return $response->withJson($result);
     }
 }

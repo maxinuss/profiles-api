@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace ProfilesApi\Application\Action\Profile;
 
-use ProfilesApi\Application\Service\Profile\ProfileUpdateRequest;
-use ProfilesApi\Application\Service\Profile\ProfileUpdateService;
+use ProfilesApi\Application\Request\Profile\ProfileUpdateRequest;
+use ProfilesApi\Application\Service\ProfileService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ProfileUpdate
 {
     /**
-     * @var ProfileUpdateService
+     * @var ProfileService
      */
     private $service;
     /**
-     * @param ProfileUpdateService $service
+     * @param ProfileService $service
      */
-    public function __construct(ProfileUpdateService $service)
+    public function __construct(ProfileService $service)
     {
         $this->service = $service;
     }
@@ -32,7 +32,7 @@ class ProfileUpdate
     {
         $body = $request->getParsedBody();
 
-        $result = $this->service->execute(new ProfileUpdateRequest(
+        $result = $this->service->update(new ProfileUpdateRequest(
             (int) $id,
             $body['name'],
             $body['age'],
@@ -40,10 +40,6 @@ class ProfileUpdate
             $body['profileImage']
         ));
 
-        if ($result === true) {
-            return $response->withStatus(200);
-        } else {
-            return $response->withJson($result);
-        }
+        return $response->withJson($result);
     }
 }

@@ -26,6 +26,11 @@ interface ProfileRepository
     public function findAll();
 
     /**
+     * @return mixed
+     */
+    public function getAgeAverage();
+
+    /**
      * @param string $name
      *
      * @return mixed
